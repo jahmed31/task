@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}Task{% endblock %}
+
+{% block content %}
+<div class="flex justify-between items-center mb-4">
+    <h2 class="text-2xl subpixel-antialiased">Task List</h2>
+    <a href="{% url 'task_create' %}" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-green-700">+ New</a>
+</div>
+
+<table class="min-w-full bg-white shadow-md rounded overflow-hidden">
+    <thead class="bg-gray-200">
+        <tr>
+            <th class="px-4 py-2 text-left">Title</th>
+            <th class="px-4 py-2 text-left">Status</th>
+            <th class="px-4 py-2 text-left">Due Date</th>
+            <th class="px-4 py-2 text-right">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for task in tasks %}
+        <tr class="border-b hover:bg-gray-50">
+            <td class="px-4 py-2 subpixel-antialiased">{{ task.title }}</td>
+            <td class="px-4 py-2 subpixel-antialiased">{{ task.status }}</td>
+            <td class="px-4 py-2 subpixel-antialiased">{{ task.due_date }}</td>
+            <td class="px-4 py-2 text-right space-x-2">
+                <a href="{% url 'task_detail' task.id %}" class="text-blue-600 hover:underline">View</a>
+                <a href="{% url 'task_update' task.id %}" class="text-yellow-600 hover:underline">Edit</a>
+                <a href="{% url 'task_delete' task.id %}" class="text-red-600 hover:underline">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4" class="px-4 py-4 text-center text-gray-500">No tasks found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
