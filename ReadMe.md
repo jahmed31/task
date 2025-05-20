@@ -12,6 +12,7 @@ Task App is a Django-based project designed to manage tasks.
 - **PostgreSQL**: For database.
 - **nginx**: Reverse proxy server is nginx.
 - **Docker**: Docker and docker-compose been used for building and running services.
+- **tailwindcss**: CDN for tailwind used and attached in `base.html`
 
 ## Getting Started
 Docker compose file `docker-compose.yml` available in which services has been defined
@@ -36,9 +37,9 @@ My strategy to make the code simple and clean.
    Application used `custom user` model for django application, Can be found in `users` directory.
     
 3. **Running Project**:<br />
-   Change directory to smart project and run with docker compose 
+   Change directory to smart_nsales project and run with docker compose 
     ```sh
-   cd smart
+   cd smart_nsales
    docker-compose build --no-cache && docker-compose up --force-recreate
    ```
    Make sure to create superuser to start using admin and creating users from admin. <br />
